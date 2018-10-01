@@ -16,6 +16,7 @@
 *.iml
 *.ipr
 */**.iml
+*/target/
 
 ### NetBeans ###
 /nbproject/private/
@@ -24,3 +25,6 @@
 /dist/
 /nbdist/
 /.nb-gradle/
+
+*.class
+*/target/
