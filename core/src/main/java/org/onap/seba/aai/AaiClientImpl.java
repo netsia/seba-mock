@@ -47,13 +47,13 @@ public class AaiClientImpl implements AaiClient {
     }
 
     @Override
-    public PNF putPnf(PNF pnf) {
+    public void putPnf(PNF pnf) {
         try {
             ClientResponse response = AaiWebClient.webClient(aaiConfig).build().putPNF(pnf);
             commonErrorCheck(pnf,response);
             log.info("Pnf query response code {} for {} ",response.statusCode(),pnf);
             if (response.statusCode().is2xxSuccessful()) {
-                return AaiHeaderUtil.convertToPnf(response.bodyToMono(String.class).block());
+                return;
             }
         } catch (SSLException e) {
             log.error("",e);

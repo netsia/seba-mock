@@ -10,7 +10,7 @@ import org.onap.seba.model.CommonEventHeader;
 import org.onap.seba.model.Event;
 import org.onap.seba.model.PnfRegistrationFields;
 import org.onap.seba.service.PNFRegistrationService;
-import org.springframework.beans.factory.annotation.Value;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -29,11 +29,12 @@ public class PNFRegistrationServiceImpl implements PNFRegistrationService {
 
     private ScheduledExecutorService collectorExecuter = Executors.newScheduledThreadPool(1);
 
-    @Value("${pnf.correlationId}") private String correlationId;
-    @Value("${ves.url}") private String vesUrl;
-    @Value("${pnf.macAddress}") private String pnfMacAddress;
-    @Value("${pnf.ipv4}") private String pnfIpv4Address;
-    @Value("${pnf.ipv6}") private String getPnfIpv6Address;
+    private PNFConfig pnfConfig;
+
+    @Autowired
+    public PNFRegistrationServiceImpl(PNFConfig pnfConfig) {
+        this.pnfConfig = pnfConfig;
+    }
 
     @PostConstruct
     public void before()
@@ -66,13 +67,13 @@ public class PNFRegistrationServiceImpl implements PNFRegistrationService {
     }
 
     private void registerPNF() throws NullParameterException, HTTPException, URISyntaxException {
-        CommonEventHeader commonEventHeader = ModelUtils.getDefaultPnfCommontEventHeader(correlationId);
+        CommonEventHeader commonEventHeader = ModelUtils.getDefaultPnfCommontEventHeader(pnfConfig.getCorrelationId());
         PnfRegistrationFields pnfRegistrationFields = ModelUtils.createPnfRegistration(
-                pnfMacAddress,pnfIpv4Address,getPnfIpv6Address);
+                pnfConfig.getPnfMacAddress(), pnfConfig.getPnfIpv4Address(), pnfConfig.getGetPnfIpv6Address());
         Event event = new Event(commonEventHeader,pnfRegistrationFields);
         Map<String, String> headerMap = new HashMap<>();
         headerMap.put("Content-Type","application/json");
-        ResponseEntity<String> responseEntity = RequestSender.sendRequest(vesUrl,headerMap,new Gson().toJson(event), HttpMethod.POST,String.class);
+        ResponseEntity<String> responseEntity = RequestSender.sendRequest(pnfConfig.getVesUrl(),headerMap,new Gson().toJson(event), HttpMethod.POST,String.class);
         log.info(responseEntity.getBody());
     }
 

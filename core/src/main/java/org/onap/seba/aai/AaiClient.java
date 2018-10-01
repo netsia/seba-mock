@@ -7,5 +7,5 @@ import org.onap.seba.aai.model.PNF;
  */
 public interface AaiClient {
     PNF queryPnf(String name);
-    PNF putPnf(PNF pnf);
+    void putPnf(PNF pnf);
 }
