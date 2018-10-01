@@ -16,5 +16,6 @@ public class PNFConfig {
     @Value("${ves.url}") private String vesUrl;
     @Value("${pnf.macAddress}") private String pnfMacAddress;
     @Value("${pnf.ipv4}") private String pnfIpv4Address;
-    @Value("${pnf.ipv6}") private String getPnfIpv6Address;
+    @Value("${pnf.ipv6}") private String pnfIpv6Address;
+    @Value("${pnf.egisterTimeInterval}") private Integer pnfRegisterTimeInterval;
 }

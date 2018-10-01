@@ -63,14 +63,14 @@ public class PNFRegistrationServiceImpl implements PNFRegistrationService {
         };
 
 
-        collectorExecuter.scheduleWithFixedDelay(collectTask,0,1, TimeUnit.SECONDS);
+        collectorExecuter.scheduleWithFixedDelay(collectTask,0,pnfConfig.getPnfRegisterTimeInterval(), TimeUnit.SECONDS);
 
     }
 
     private void registerPNF() throws NullParameterException, HTTPException, URISyntaxException {
         CommonEventHeader commonEventHeader = ModelUtils.getDefaultPnfCommontEventHeader(pnfConfig.getCorrelationId());
         PnfRegistrationFields pnfRegistrationFields = ModelUtils.createPnfRegistration(
-                pnfConfig.getPnfMacAddress(), pnfConfig.getPnfIpv4Address(), pnfConfig.getGetPnfIpv6Address());
+                pnfConfig.getPnfMacAddress(), pnfConfig.getPnfIpv4Address(), pnfConfig.getPnfIpv6Address());
         Event event = new Event(commonEventHeader,pnfRegistrationFields);
         VesEvent vesEvent = new VesEvent("v7",event);
         Map<String, String> headerMap = new HashMap<>();
