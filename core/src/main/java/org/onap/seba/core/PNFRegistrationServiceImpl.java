@@ -9,6 +9,7 @@ import org.onap.seba.common.util.RequestSender;
 import org.onap.seba.model.CommonEventHeader;
 import org.onap.seba.model.Event;
 import org.onap.seba.model.PnfRegistrationFields;
+import org.onap.seba.model.VesEvent;
 import org.onap.seba.service.PNFRegistrationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpMethod;
@@ -71,9 +72,10 @@ public class PNFRegistrationServiceImpl implements PNFRegistrationService {
         PnfRegistrationFields pnfRegistrationFields = ModelUtils.createPnfRegistration(
                 pnfConfig.getPnfMacAddress(), pnfConfig.getPnfIpv4Address(), pnfConfig.getGetPnfIpv6Address());
         Event event = new Event(commonEventHeader,pnfRegistrationFields);
+        VesEvent vesEvent = new VesEvent("v7",event);
         Map<String, String> headerMap = new HashMap<>();
         headerMap.put("Content-Type","application/json");
-        ResponseEntity<String> responseEntity = RequestSender.sendRequest(pnfConfig.getVesUrl(),headerMap,new Gson().toJson(event), HttpMethod.POST,String.class);
+        ResponseEntity<String> responseEntity = RequestSender.sendRequest(pnfConfig.getVesUrl(),headerMap,new Gson().toJson(vesEvent), HttpMethod.POST,String.class);
         log.info(responseEntity.getBody());
     }
 

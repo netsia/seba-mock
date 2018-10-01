@@ -17,8 +17,8 @@ public class ModelUtils {
                 .vesEventListenerVersion(MessageConstants.VES_EVENT_LISTENER_VERSION_NUMBER).sequence(MessageConstants.SEQUENCE_NUMBER)
         .internalHeaderFields(new InternalHeaderFields(String.valueOf(timeMillis))).priority(MessageConstants.PRIORITY_NORMAL)
                 .eventName(MessageConstants.DOMAIN_PNF_REGISTRATION).eventType(MessageConstants.DOMAIN_PNF_REGISTRATION)
-                .domain(MessageConstants.DOMAIN_PNF_REGISTRATION).sourceId(MessageConstants.DOMAIN_PNF_REGISTRATION)
-                .sourceName(pnfName).build();
+                .domain(DomainType.PNF_REGISTRATION.getType()).sourceId(MessageConstants.DOMAIN_PNF_REGISTRATION)
+                .sourceName(pnfName).reportingEntityName(MessageConstants.DOMAIN_PNF_REGISTRATION).build();
     }
 
     public static PnfRegistrationFields createPnfRegistration(String macAddress ,String ipV4Address,String ipV6Address)

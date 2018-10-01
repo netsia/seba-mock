@@ -30,7 +30,7 @@ public final class MessageConstants {
     static final int SEQUENCE_NUMBER = 0;
     static final String VERSION_NUMBER = "4.0.1";
     static final String VES_EVENT_LISTENER_VERSION_NUMBER = "7.0.1";
-    static final String PRIORITY_NORMAL = ProcessPriority.NORMAL.toString();
+    static final String PRIORITY_NORMAL = ProcessPriority.NORMAL.getType();
 
     //=============================================================================================
     //PNF registration
