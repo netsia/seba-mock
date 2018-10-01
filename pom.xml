@@ -9,8 +9,8 @@
 	<modules>
 		<module>api</module>
 		<module>core</module>
-		<module>application</module>
 		<module>web</module>
+		<module>application</module>
 	</modules>
 	<packaging>pom</packaging>
 
