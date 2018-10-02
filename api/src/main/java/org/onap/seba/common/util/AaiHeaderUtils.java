@@ -13,18 +13,16 @@ import java.util.Map;
 /**
  * Created by cemturker on 12.04.2018.
  */
-public class AaiHeaderUtil {
-    private static final Logger logger = LoggerFactory.getLogger(AaiHeaderUtil.class);
-    private static final String X_FROM_APP_ID = "X-FromAppId";
-    private static final String X_TRANSACTION_ID = "X-TransactionId";
-    private static final String ACCEPT = "Accept";
-    private static final String CONTENT_TYPE = "Content-Type";
-    private AaiHeaderUtil(){}
+public class AaiHeaderUtils extends CommonUtils {
+
+    AaiHeaderUtils(){
+        super();
+    }
 
     public static Map<String, String> headers() {
         return new ImmutableMap.Builder<String, String>()
-                .put(X_FROM_APP_ID,"OSAM")
-                .put(X_TRANSACTION_ID,"99")
+                .put(X_FROM_APP_ID,"SEBA")
+                .put(X_TRANSACTION_ID,"100")
                 .put(ACCEPT, MediaType.APPLICATION_JSON_VALUE)
                 .put(CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
                 .build();

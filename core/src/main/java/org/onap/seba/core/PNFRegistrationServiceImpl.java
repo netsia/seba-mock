@@ -64,7 +64,7 @@ public class PNFRegistrationServiceImpl implements PNFRegistrationService {
         };
 
 
-        collectorExecuter.scheduleWithFixedDelay(collectTask,0,pnfConfig.getPnfRegisterTimeInterval(), TimeUnit.SECONDS);
+        collectorExecuter.scheduleWithFixedDelay(collectTask,0,Integer.parseInt(pnfConfig.getPnfRegisterTimeInterval()), TimeUnit.SECONDS);
 
     }
 
@@ -78,6 +78,9 @@ public class PNFRegistrationServiceImpl implements PNFRegistrationService {
         headerMap.put("Content-Type","application/json");
         ResponseEntity<String> responseEntity = RequestSender.sendRequest(pnfConfig.getVesUrl(),headerMap,new Gson().toJson(vesEvent), HttpMethod.POST,String.class);
         log.info(responseEntity.getBody());
+        if(!responseEntity.getStatusCode().is2xxSuccessful()) {
+            throw new HTTPException("http failed code:"+responseEntity.getStatusCode().value());
+        }
     }
 
     @Override

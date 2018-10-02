@@ -6,7 +6,7 @@ import io.netty.handler.ssl.util.InsecureTrustManagerFactory;
 import lombok.extern.slf4j.Slf4j;
 import org.onap.seba.aai.config.AaiConfig;
 import org.onap.seba.model.PNF;
-import org.onap.seba.common.util.AaiHeaderUtil;
+import org.onap.seba.common.util.AaiHeaderUtils;
 import org.springframework.http.client.reactive.ReactorClientHttpConnector;
 import org.springframework.web.reactive.function.client.ClientResponse;
 import org.springframework.web.reactive.function.client.WebClient;
@@ -46,7 +46,7 @@ public class AaiWebClient {
                     clientOptions.sslContext(sslContext);
                     clientOptions.disablePool();
                 }))
-                .defaultHeaders(httpHeaders -> httpHeaders.setAll(AaiHeaderUtil.headers()))
+                .defaultHeaders(httpHeaders -> httpHeaders.setAll(AaiHeaderUtils.headers()))
                 .filter(basicAuthentication(config.getUsername(), config.getPassword()))
                 .build();
         return this;
@@ -57,7 +57,7 @@ public class AaiWebClient {
     }
 
     public ClientResponse putPNF(PNF pnf) {
-        String aai = AaiHeaderUtil.convertPnfToString(pnf);
+        String aai = AaiHeaderUtils.convertPnfToString(pnf);
         System.out.println(aai);
         return this.webClient.put()
                 .uri(getUri(pnf.getPnfName()))

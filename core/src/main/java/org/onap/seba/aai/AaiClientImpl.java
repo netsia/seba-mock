@@ -7,7 +7,7 @@ import org.onap.seba.common.exception.NotFoundException;
 import org.onap.seba.aai.config.AaiConfig;
 import org.onap.seba.common.exception.ExternalSystemException;
 import org.onap.seba.model.PNF;
-import org.onap.seba.common.util.AaiHeaderUtil;
+import org.onap.seba.common.util.AaiHeaderUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -38,7 +38,7 @@ public class AaiClientImpl implements AaiClient {
             commonErrorCheck(name,response);
             log.info("Pnf query response code {} for {} id",response.statusCode(),name);
             if (response.statusCode().is2xxSuccessful()) {
-                return AaiHeaderUtil.convertToPnf(response.bodyToMono(String.class).block());
+                return AaiHeaderUtils.convertToPnf(response.bodyToMono(String.class).block());
             }
         } catch (SSLException e) {
             log.error("",e);

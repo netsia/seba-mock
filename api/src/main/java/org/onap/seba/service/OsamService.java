@@ -7,5 +7,5 @@ import org.onap.seba.model.AccessPod;
  */
 public interface OsamService {
     void register(AccessPod accessPod);
-    void deRegister(AccessPod accessPod);
+    void deRegister(String pnfId);
 }
