@@ -22,6 +22,8 @@ public class PNFConfig {
     private String pnfIpv4Address;
     @Value("${pnf.ipv6}")
     private String pnfIpv6Address;
+    @Value("${pnf.kafkaConsumerTimeInterval}")
+    private String kafkaConsumerTimeInterval;
     @Value("${pnf.pnfRegisterTimeInterval}")
     private String pnfRegisterTimeInterval;
     @Value("${pnf.xos.ip}")
