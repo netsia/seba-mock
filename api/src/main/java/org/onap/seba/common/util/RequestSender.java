@@ -1,9 +1,10 @@
 package org.onap.seba.common.util;
 
 import lombok.extern.slf4j.Slf4j;
-import org.onap.seba.common.exception.HTTPException;
-import org.springframework.http.*;
-import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 
 import java.net.URI;

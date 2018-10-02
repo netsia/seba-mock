@@ -11,5 +11,11 @@
 
     <artifactId>web</artifactId>
     <name>seba-web</name>
-
+    <dependencies>
+        <dependency>
+            <groupId>org.onap</groupId>
+            <artifactId>seba-api</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+    </dependencies>
 </project>

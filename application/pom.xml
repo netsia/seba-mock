@@ -27,7 +27,12 @@
         <dependency>
             <groupId>org.onap</groupId>
             <artifactId>seba-core</artifactId>
-            <version>0.0.1</version>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.onap</groupId>
+            <artifactId>web</artifactId>
+            <version>${project.version}</version>
         </dependency>
     </dependencies>
     <build>
