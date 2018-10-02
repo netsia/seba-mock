@@ -6,6 +6,7 @@ import org.onap.seba.common.exception.HTTPException;
 import org.onap.seba.common.exception.NullParameterException;
 import org.onap.seba.common.util.ModelUtils;
 import org.onap.seba.common.util.RequestSender;
+import org.onap.seba.core.config.PNFConfig;
 import org.onap.seba.model.CommonEventHeader;
 import org.onap.seba.model.Event;
 import org.onap.seba.model.PnfRegistrationFields;

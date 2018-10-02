@@ -1,4 +1,4 @@
-package org.onap.seba.aai.model;
+package org.onap.seba.model;
 
 import com.google.gson.annotations.SerializedName;
 import lombok.Getter;

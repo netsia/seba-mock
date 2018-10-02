@@ -1,13 +1,13 @@
 package org.onap.seba.aai;
 
 import lombok.extern.slf4j.Slf4j;
-import org.onap.seba.core.exception.BadFormatException;
-import org.onap.seba.core.exception.InvalidOperationException;
-import org.onap.seba.core.exception.NotFoundException;
+import org.onap.seba.common.exception.BadFormatException;
+import org.onap.seba.common.exception.InvalidOperationException;
+import org.onap.seba.common.exception.NotFoundException;
 import org.onap.seba.aai.config.AaiConfig;
-import org.onap.seba.aai.exception.ExternalSystemException;
-import org.onap.seba.aai.model.PNF;
-import org.onap.seba.aai.util.AaiHeaderUtil;
+import org.onap.seba.common.exception.ExternalSystemException;
+import org.onap.seba.model.PNF;
+import org.onap.seba.common.util.AaiHeaderUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;

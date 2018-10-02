@@ -1,9 +1,9 @@
-package org.onap.seba.aai.util;
+package org.onap.seba.common.util;
 
 import com.google.common.collect.ImmutableMap;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import org.onap.seba.aai.model.PNF;
+import org.onap.seba.model.PNF;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.MediaType;

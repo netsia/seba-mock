@@ -1,4 +1,4 @@
-package org.onap.seba.core.exception;
+package org.onap.seba.common.exception;
 
 /**
  * Created by Zafer Kaban on 18.09.2018.

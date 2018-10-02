@@ -1,4 +1,4 @@
-package org.onap.seba.core;
+package org.onap.seba.core.config;
 
 import lombok.Getter;
 import lombok.Setter;

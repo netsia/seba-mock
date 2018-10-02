@@ -2,7 +2,8 @@ package org.onap.seba.core;
 
 import lombok.extern.slf4j.Slf4j;
 import org.onap.seba.aai.AaiClient;
-import org.onap.seba.aai.model.PNF;
+import org.onap.seba.core.config.PNFConfig;
+import org.onap.seba.model.PNF;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

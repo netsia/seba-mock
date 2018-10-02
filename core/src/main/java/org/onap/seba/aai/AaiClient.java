@@ -1,6 +1,6 @@
 package org.onap.seba.aai;
 
-import org.onap.seba.aai.model.PNF;
+import org.onap.seba.model.PNF;
 
 /**
  * Created by cemturker on 26.09.2018.
