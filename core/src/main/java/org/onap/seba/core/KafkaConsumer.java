@@ -88,6 +88,7 @@ public class KafkaConsumer {
                 if(accessPod == null)
                     return;
                 try {
+                    log.info("PNF READY EVENT is received for {}. Osam core registration will begin",accessPod.getPnfId());
                     osamService.register(accessPod);
                     collectorExecuter.shutdown();
                 }

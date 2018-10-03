@@ -76,6 +76,7 @@ public class PNFRegistrationServiceImpl implements PNFRegistrationService {
         VesEvent vesEvent = new VesEvent("v7",event);
         Map<String, String> headerMap = new HashMap<>();
         headerMap.put("Content-Type","application/json");
+        log.info("PNF Registration Event is going to be sent");
         ResponseEntity<String> responseEntity = RequestSender.sendRequest(pnfConfig.getVesUrl(),headerMap,new Gson().toJson(vesEvent), HttpMethod.POST,String.class);
         log.info(responseEntity.getBody());
         if(!responseEntity.getStatusCode().is2xxSuccessful()) {
